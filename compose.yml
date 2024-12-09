@@ -1,0 +1,26 @@
+services:
+  gandalf:
+    build: vsftpserver
+    hostname: gandalf
+    networks:
+      redeftp:
+          ipv4_address: 192.168.30.10
+    volumes:
+      - ./vsftpserver/conf/vsftpd.conf:/etc/vsftpd.conf
+      - ./vsftpserver/conf/gandalf:/welcome.banner
+      - ./vsftpserver/private/vsftpd.pem:/etc/ssl/private/vsftpd.pem
+      - ./vsftpserver/certs/vsftpd.pem:/etc/ssl/certs/vsftpd.pem
+
+  eq1:
+    build: vsftpclient
+    hostname: eq1
+    networks:
+      redeftp:
+          ipv4_address: 192.168.30.100
+    
+networks:
+  redeftp:
+    ipam:
+      config:
+        - subnet: 192.168.30.0/24
+
