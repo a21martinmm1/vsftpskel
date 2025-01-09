@@ -12,7 +12,7 @@ RUN useradd -d /home/jefe -m -s /bin/bash -p $(echo abc123.. | mkpasswd) jefe
 
 RUN mkdir /home/jefe/public_html
 
-RUN chmod -w /home/jefe/
+RUN chmod a-w /home/jefe/
 
 RUN chown jefe:jefe /home/jefe/public_html
 
@@ -20,13 +20,13 @@ RUN useradd -d /home/empleado -m -s /bin/bash -p $(echo abc123.. | mkpasswd) emp
 
 RUN mkdir /home/empleado/public_html
 
-RUN chmod -w /home/empleado/
+RUN chmod a-w /home/empleado/
 
 RUN chown jefe:jefe /home/empleado/public_html
 
 RUN mkdir /sauron
 
-RUN chmod -w /sauron
+RUN chmod a-w /sauron
 
 RUN mkdir /sauron/public_html
 
